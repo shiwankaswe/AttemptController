@@ -1,0 +1,14 @@
+F:\MSC\Project Management\untitled folder\Project\UnitTests\bin\Debug\netcoreapp1.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+F:\MSC\Project Management\untitled folder\Project\UnitTests\bin\Debug\netcoreapp1.0\xunit.runner.utility.dotnet.dll
+F:\MSC\Project Management\untitled folder\Project\UnitTests\bin\Debug\netcoreapp1.0\xunit.runner.reporters.dotnet.dll
+F:\MSC\Project Management\untitled folder\Project\UnitTests\bin\Debug\netcoreapp1.0\StopGuessingTests.deps.json
+F:\MSC\Project Management\untitled folder\Project\UnitTests\bin\Debug\netcoreapp1.0\StopGuessingTests.runtimeconfig.json
+F:\MSC\Project Management\untitled folder\Project\UnitTests\bin\Debug\netcoreapp1.0\StopGuessingTests.runtimeconfig.dev.json
+F:\MSC\Project Management\untitled folder\Project\UnitTests\bin\Debug\netcoreapp1.0\StopGuessingTests.dll
+F:\MSC\Project Management\untitled folder\Project\UnitTests\bin\Debug\netcoreapp1.0\StopGuessingTests.pdb
+F:\MSC\Project Management\untitled folder\Project\UnitTests\bin\Debug\netcoreapp1.0\AttemptController.dll
+F:\MSC\Project Management\untitled folder\Project\UnitTests\bin\Debug\netcoreapp1.0\AttemptController.pdb
+F:\MSC\Project Management\untitled folder\Project\UnitTests\obj\Debug\netcoreapp1.0\UnitTests.csprojResolveAssemblyReference.cache
+F:\MSC\Project Management\untitled folder\Project\UnitTests\obj\Debug\netcoreapp1.0\UnitTests.AssemblyInfo.cs
+F:\MSC\Project Management\untitled folder\Project\UnitTests\obj\Debug\netcoreapp1.0\StopGuessingTests.dll
+F:\MSC\Project Management\untitled folder\Project\UnitTests\obj\Debug\netcoreapp1.0\StopGuessingTests.pdb

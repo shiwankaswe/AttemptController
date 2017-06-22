@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\AttemptController",
+    "\\AttemptController\\Clients",
+    "\\AttemptController\\Controllers",
+    "\\AttemptController\\DataStructures"
+  ],
+  "SelectedNode": "\\AttemptController\\Clients\\DistributedBinomialLadderFilterClient.cs",
+  "PreviewInSolutionExplorer": false
+}
