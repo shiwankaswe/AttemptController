@@ -44,7 +44,7 @@ namespace Tester
             if (denominmator == 0)
                 return "NaN";
             else
-                return (((double)numerator)/(double)denominmator).ToString(CultureInfo.InvariantCulture);
+                return (((double)numerator) / (double)denominmator).ToString(CultureInfo.InvariantCulture);
         }
 
 
@@ -53,15 +53,15 @@ namespace Tester
             foreach (ExperimentalConfiguration config in configurations)
             {
                 DateTime now = DateTime.Now;
-                string dirName = config.OutputPath + config.OutputDirectoryName;
+                string dirName = config.OutputPath;// + config.OutputDirectoryName;
                 Directory.CreateDirectory(dirName);
-                string path = dirName + @"\";
+                string path = dirName;// + @"\";
 
-                if(errorWriter == null)
-                errorWriter = (new StreamWriter(new FileStream(path + "error.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite)));
+                if (errorWriter == null)
+                    errorWriter = (new StreamWriter(new FileStream(path + "error.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite)));
 
                 DebugLogger logger = new DebugLogger();
-               
+
                 try
                 {
                     SimulatedPasswords simPasswords = new SimulatedPasswords(logger, config);
@@ -87,20 +87,20 @@ namespace Tester
 
         public Simulator(DebugLogger logger, string path, ExperimentalConfiguration myExperimentalConfiguration, SimulatedPasswords simPasswords)
         {
-            
+
             _simPasswords = simPasswords;
             _logger = logger;
-            if(_Attempts==null)
-            _Attempts =  new ConcurrentStreamWriter(path + "Attempts.txt");
+            if (_Attempts == null)
+                _Attempts = new ConcurrentStreamWriter(path + "Attempts.txt");
 
             _logger.WriteStatus("Entered Simulator constructor");
             _experimentalConfiguration = myExperimentalConfiguration;
             BlockingAlgorithmOptions options = _experimentalConfiguration.BlockingOptions;
-            
+
             _logger.WriteStatus("Creating binomial ladder");
             _binomialLadderFilter =
                 new BinomialLadderFilter(options.NumberOfBitsInBinomialLadderFilter_N, options.HeightOfBinomialLadder_H);
-            _ipHistoryCache = new ConcurrentDictionary<IPAddress, SimIpHistory>();       
+            _ipHistoryCache = new ConcurrentDictionary<IPAddress, SimIpHistory>();
             _userAccountController = new SimulatedUserAccountController();
 
             _recentIncorrectPasswords = new AgingMembershipSketch(16, 128 * 1024);
@@ -137,8 +137,7 @@ namespace Tester
                 lock (writer)
                 {
 
-                    writer.WriteLine(string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}",
-                        "Password",
+                    writer.WriteLine(string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}",
                         "UserID",
                         "IP",
                         "DeviceCookie",
@@ -151,93 +150,95 @@ namespace Tester
             }
 
             TimeSpan testTimeSpan = _experimentalConfiguration.TestTimeSpan;
-            double ticksBetweenLogins = ((double) testTimeSpan.Ticks)/
-                                        (double) _experimentalConfiguration.TotalLoginAttemptsToIssue;
+            double ticksBetweenLogins = ((double)testTimeSpan.Ticks) /
+                                        (double)_experimentalConfiguration.TotalLoginAttemptsToIssue;
             _experimentalConfiguration.TotalLoginAttemptsToIssue = 30000;
             int interlockedCount = 0;
 
-            Parallel.For(0L, (long) _experimentalConfiguration.TotalLoginAttemptsToIssue, (count, pls) =>
-            {
-                interlockedCount = Interlocked.Add(ref interlockedCount, 1);
-                if (interlockedCount % 10000 == 0)
-                    _logger.WriteStatus("Login Attempt {0:N0}", interlockedCount);
-                DateTime eventTimeUtc = StartTimeUtc.AddTicks((long) (ticksBetweenLogins* interlockedCount));
-                SimulatedLoginAttempt simAttempt;
-                if (StrongRandomNumberGenerator.GetFraction() <
-                    _experimentalConfiguration.FractionOfLoginAttemptsFromAttacker)
-                {
-                    switch (_experimentalConfiguration.AttackersStrategy)
-                    {
-                        case ExperimentalConfiguration.AttackStrategy.UseUntilLikelyPopular:
-                            simAttempt =
-                                _attemptGenerator.MaliciousLoginAttemptBreadthFirstAvoidMakingPopular(eventTimeUtc);
-                            break;
-                        case ExperimentalConfiguration.AttackStrategy.Weighted:
-                            simAttempt = _attemptGenerator.MaliciousLoginAttemptWeighted(eventTimeUtc);
-                            break;
-                        case ExperimentalConfiguration.AttackStrategy.BreadthFirst:
-                        default:
-                            simAttempt = _attemptGenerator.MaliciousLoginAttemptBreadthFirst(eventTimeUtc);
-                            break;
-                    }
-                }
-                else
-                {
-                    simAttempt = _attemptGenerator.BenignLoginAttempt(eventTimeUtc);
-                }
+            Parallel.For(0L, (long)_experimentalConfiguration.TotalLoginAttemptsToIssue, (count, pls) =>
+           {
+               interlockedCount = Interlocked.Add(ref interlockedCount, 1);
+               if (interlockedCount % 10000 == 0)
+                   _logger.WriteStatus("Login Attempt {0:N0}", interlockedCount);
+               DateTime eventTimeUtc = StartTimeUtc.AddTicks((long)(ticksBetweenLogins * interlockedCount));
+               SimulatedLoginAttempt simAttempt;
+               if (StrongRandomNumberGenerator.GetFraction() <
+                   _experimentalConfiguration.FractionOfLoginAttemptsFromAttacker)
+               {
+                   switch (_experimentalConfiguration.AttackersStrategy)
+                   {
+                       case ExperimentalConfiguration.AttackStrategy.UseUntilLikelyPopular:
+                           simAttempt =
+                               _attemptGenerator.MaliciousLoginAttemptBreadthFirstAvoidMakingPopular(eventTimeUtc);
+                           break;
+                       case ExperimentalConfiguration.AttackStrategy.Weighted:
+                           simAttempt = _attemptGenerator.MaliciousLoginAttemptWeighted(eventTimeUtc);
+                           break;
+                       case ExperimentalConfiguration.AttackStrategy.BreadthFirst:
+                       default:
+                           simAttempt = _attemptGenerator.MaliciousLoginAttemptBreadthFirst(eventTimeUtc);
+                           break;
+                   }
+               }
+               else
+               {
+                   simAttempt = _attemptGenerator.BenignLoginAttempt(eventTimeUtc);
+               }
 
 
-                SimIpHistory ipHistory = _ipHistoryCache.GetOrAdd(simAttempt.AddressOfClientInitiatingRequest,
-                    (ip) => new SimIpHistory(
-                            _experimentalConfiguration.BlockingOptions
-                                .NumberOfFailuresToTrackForGoingBackInTimeToIdentifyTypos) );
-                double[] scores = ipHistory.GetAllScores(_experimentalConfiguration.BlockingOptions.BlockScoreHalfLife,
-                    simAttempt.TimeOfAttemptUtc);
+               SimIpHistory ipHistory = _ipHistoryCache.GetOrAdd(simAttempt.AddressOfClientInitiatingRequest,
+                   (ip) => new SimIpHistory(
+                           _experimentalConfiguration.BlockingOptions
+                               .NumberOfFailuresToTrackForGoingBackInTimeToIdentifyTypos));
+               double[] scores = ipHistory.GetAllScores(_experimentalConfiguration.BlockingOptions.BlockScoreHalfLife,
+                   simAttempt.TimeOfAttemptUtc);
 
-                simAttempt.UpdateSimulatorState(this, ipHistory);
+               simAttempt.UpdateSimulatorState(this, ipHistory);
 
-                double decayingInvalidPasswordAttempts = 0d;
-                if (simAttempt.IsPasswordValid)
-                {
-                    DecayingDouble incorrectPasswordAttempts;
-                    if (_incorrectPasswordCounts.TryGetValue(simAttempt.Password, out incorrectPasswordAttempts))
-                        decayingInvalidPasswordAttempts = incorrectPasswordAttempts.GetValue(_experimentalConfiguration.BlockingOptions.BlockScoreHalfLife, simAttempt.TimeOfAttemptUtc);
-                } else
-                {
-                    decayingInvalidPasswordAttempts = 1d;
-                    DecayingDouble incorrectPasswordAttempts;
-                    if (_incorrectPasswordCounts.TryGetValue(simAttempt.Password, out incorrectPasswordAttempts))
-                        decayingInvalidPasswordAttempts += incorrectPasswordAttempts.GetValue(_experimentalConfiguration.BlockingOptions.BlockScoreHalfLife, simAttempt.TimeOfAttemptUtc);
-                    _incorrectPasswordCounts[simAttempt.Password] = new DecayingDouble(decayingInvalidPasswordAttempts, simAttempt.TimeOfAttemptUtc);
-                }
+               double decayingInvalidPasswordAttempts = 0d;
+               if (simAttempt.IsPasswordValid)
+               {
+                   DecayingDouble incorrectPasswordAttempts;
+                   if (_incorrectPasswordCounts.TryGetValue(simAttempt.Password, out incorrectPasswordAttempts))
+                       decayingInvalidPasswordAttempts = incorrectPasswordAttempts.GetValue(_experimentalConfiguration.BlockingOptions.BlockScoreHalfLife, simAttempt.TimeOfAttemptUtc);
+               }
+               else
+               {
+                   decayingInvalidPasswordAttempts = 1d;
+                   DecayingDouble incorrectPasswordAttempts;
+                   if (_incorrectPasswordCounts.TryGetValue(simAttempt.Password, out incorrectPasswordAttempts))
+                       decayingInvalidPasswordAttempts += incorrectPasswordAttempts.GetValue(_experimentalConfiguration.BlockingOptions.BlockScoreHalfLife, simAttempt.TimeOfAttemptUtc);
+                   _incorrectPasswordCounts[simAttempt.Password] = new DecayingDouble(decayingInvalidPasswordAttempts, simAttempt.TimeOfAttemptUtc);
+               }
 
-                var ipInfo = _ipPool.GetIpAddressDebugInfo(simAttempt.AddressOfClientInitiatingRequest);
-                string outputString = string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}",
-                    simAttempt.Password,
-                    simAttempt.SimAccount?.UsernameOrAccountId ?? "<null>",
-                    simAttempt.AddressOfClientInitiatingRequest,
-                    simAttempt.DeviceCookieHadPriorSuccessfulLoginForThisAccount ? "HadCookie" : "NoCookie",
-                    simAttempt.IsFrequentlyGuessedPassword ? "Frequent" : "Infrequent",
-                    simAttempt.IsPasswordValid ? "Correct" : "Incorrect",
-                    simAttempt.IsFromAttacker ? "FromAttacker" : "FromUser",
-                    simAttempt.IsGuess ? "IsGuess" : "NotGuess",
-                    simAttempt.IsFromAttacker
-                        ? (ipInfo.UsedByBenignUsers ? "IsInBenignPool" : "NotUsedByBenign")
-                        : (ipInfo.UsedByAttackers ? "IsInAttackersIpPool" : "NotUsedByAttacker"),
-                    ipInfo.IsPartOfProxy ? "ProxyIP" : "NotAProxy",
-                    string.IsNullOrEmpty(simAttempt.MistakeType) ? "-" : simAttempt.MistakeType,
-                    decayingInvalidPasswordAttempts,
-                    simAttempt.SimAccount?.MaxConsecutiveIncorrectAttempts.GetValue(_experimentalConfiguration.BlockingOptions.BlockScoreHalfLife, simAttempt.TimeOfAttemptUtc) ?? 0d,
-                    string.Join("\t", scores.Select(s => s.ToString(CultureInfo.InvariantCulture)).ToArray())
-                    );
+               var ipInfo = _ipPool.GetIpAddressDebugInfo(simAttempt.AddressOfClientInitiatingRequest);
+               string outputString = string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}",
+                   simAttempt.SimAccount?.UsernameOrAccountId ?? "<null>",
+                   simAttempt.AddressOfClientInitiatingRequest,
+                   simAttempt.DeviceCookieHadPriorSuccessfulLoginForThisAccount ? "HadCookie" : "NoCookie",
+                   simAttempt.IsFrequentlyGuessedPassword ? "Frequent" : "Infrequent",
+                   simAttempt.IsPasswordValid ? "Correct" : "Incorrect",
+                   simAttempt.IsFromAttacker ? "FromAttacker" : "FromUser",
+                   simAttempt.IsGuess ? "IsGuess" : "NotGuess",
+                   simAttempt.IsFromAttacker
+                       ? (ipInfo.UsedByBenignUsers ? "IsInBenignPool" : "NotUsedByBenign")
+                       : (ipInfo.UsedByAttackers ? "IsInAttackersIpPool" : "NotUsedByAttacker"),
+                   ipInfo.IsPartOfProxy ? "ProxyIP" : "NotAProxy",
+                   string.IsNullOrEmpty(simAttempt.MistakeType) ? "-" : simAttempt.MistakeType,
+                   decayingInvalidPasswordAttempts,
+                   simAttempt.SimAccount?.MaxConsecutiveIncorrectAttempts.GetValue(_experimentalConfiguration.BlockingOptions.BlockScoreHalfLife, simAttempt.TimeOfAttemptUtc) ?? 0d,
+                   string.Join("\t", scores.Select(s => s.ToString(CultureInfo.InvariantCulture)).ToArray())
+                   );
 
 
-                        _Attempts.WriteLine(outputString);
+               _Attempts.WriteLine(outputString);
+               _logger.WriteStatus(outputString);
+               Thread.Sleep(1300);
 
-            });
+           });
             foreach (
                 ConcurrentStreamWriter writer in
-                    new []
+                    new[]
                     {_Attempts})
             {
                 writer.Close();

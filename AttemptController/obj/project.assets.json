@@ -10043,10 +10043,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\MSC\\Project Management\\untitled folder\\Project\\AttemptController\\AttemptController.csproj",
+      "projectUniqueName": "F:\\MSC\\Project Management\\AttemptController\\AttemptController\\AttemptController.csproj",
       "projectName": "AttemptController",
-      "projectPath": "F:\\MSC\\Project Management\\untitled folder\\Project\\AttemptController\\AttemptController.csproj",
-      "outputPath": "F:\\MSC\\Project Management\\untitled folder\\Project\\AttemptController\\obj\\",
+      "projectPath": "F:\\MSC\\Project Management\\AttemptController\\AttemptController\\AttemptController.csproj",
+      "outputPath": "F:\\MSC\\Project Management\\AttemptController\\AttemptController\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.0"

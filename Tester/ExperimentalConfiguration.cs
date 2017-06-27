@@ -33,10 +33,10 @@ namespace Tester
         };
         public AttackStrategy AttackersStrategy = AttackStrategy.BreadthFirst;
 
-        public string OutputPath = @"F:\MSC\Project Management\untitled folder\Development-master\Simulator";
+        public string OutputPath = @"F:\MSC\Project Management\AttemptController\Tester\Test\";
         public string OutputDirectoryName = @"Test";
-        public string PasswordFrequencyFile = @"..\..\rockyou-withcount.txt";
-        public string PreviouslyKnownPopularPasswordFile = @"..\..\phpbb.txt";
+        public string PasswordFrequencyFile = @"..\rockyou-withcount.txt";
+        public string PreviouslyKnownPopularPasswordFile = @"..\phpbb.txt";
 
         public ulong TotalLoginAttemptsToIssue = 10*Thousand;
 

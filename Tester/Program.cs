@@ -8,7 +8,7 @@ namespace Tester
     
     public class Program
     {
-        public static string BasePath = @"F:\MSC\Project Management\untitled folder\Project\Tester\Test\";
+        public static string BasePath = @"F:\MSC\Project Management\AttemptController\Tester\Test\";
         public static void Main(string[] args)
         {
             ulong sizeInMillions = 5;
@@ -64,7 +64,7 @@ namespace Tester
             double meanNumberOfLoginsPerAttackerControlledIP = 100d;
 
             DateTime now = DateTime.Now;
-            string dirName = BasePath + "Run_" + totalLoginAttempts + "_" + now.Month + "_" + now.Day + "_" + now.Hour + "_" + now.Minute;
+            string dirName = BasePath + "Run_" +  now.Month + "_" + now.Day + "_" + now.Hour + "_" + now.Minute;
             Directory.CreateDirectory(dirName);
             config.OutputPath = dirName + @"\";
 

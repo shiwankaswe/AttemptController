@@ -28,13 +28,13 @@ namespace Tester
             long memDiffMB = memDiff / (1024L * 1024L);
             _lastMemory = eventMemory;
             _lastEventTime = now;
-            Console.Out.WriteLine("Time: {0:00}:{1:00}:{2:00}.{3:000},  Memory: {5}MB",
-                eventTime.Hours,
-                eventTime.Minutes,
-                eventTime.Seconds,
-                eventTime.Milliseconds,
-                sinceLastEvent.TotalSeconds,
-                eventMemoryMB, memDiffMB);
+            //Console.Out.WriteLine("Time: {0:00}:{1:00}:{2:00}.{3:000},  Memory: {5}MB",
+            //    eventTime.Hours,
+            //    eventTime.Minutes,
+            //    eventTime.Seconds,
+            //    eventTime.Milliseconds,
+            //    sinceLastEvent.TotalSeconds,
+            //    eventMemoryMB, memDiffMB);
             Console.Out.WriteLine(status, args);
 
         }

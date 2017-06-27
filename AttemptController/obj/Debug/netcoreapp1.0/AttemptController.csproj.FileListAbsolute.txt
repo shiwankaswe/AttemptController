@@ -7,3 +7,11 @@ F:\MSC\Project Management\untitled folder\Project\AttemptController\obj\Debug\ne
 F:\MSC\Project Management\untitled folder\Project\AttemptController\obj\Debug\netcoreapp1.0\AttemptController.dll
 F:\MSC\Project Management\untitled folder\Project\AttemptController\obj\Debug\netcoreapp1.0\AttemptController.pdb
 F:\MSC\Project Management\untitled folder\Project\AttemptController\obj\Debug\netcoreapp1.0\AttemptController.csprojResolveAssemblyReference.cache
+F:\MSC\Project Management\AttemptController\AttemptController\bin\Debug\netcoreapp1.0\AttemptController.deps.json
+F:\MSC\Project Management\AttemptController\AttemptController\bin\Debug\netcoreapp1.0\AttemptController.runtimeconfig.json
+F:\MSC\Project Management\AttemptController\AttemptController\bin\Debug\netcoreapp1.0\AttemptController.runtimeconfig.dev.json
+F:\MSC\Project Management\AttemptController\AttemptController\bin\Debug\netcoreapp1.0\AttemptController.dll
+F:\MSC\Project Management\AttemptController\AttemptController\bin\Debug\netcoreapp1.0\AttemptController.pdb
+F:\MSC\Project Management\AttemptController\AttemptController\obj\Debug\netcoreapp1.0\AttemptController.AssemblyInfo.cs
+F:\MSC\Project Management\AttemptController\AttemptController\obj\Debug\netcoreapp1.0\AttemptController.dll
+F:\MSC\Project Management\AttemptController\AttemptController\obj\Debug\netcoreapp1.0\AttemptController.pdb

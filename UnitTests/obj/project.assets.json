@@ -10828,10 +10828,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\MSC\\Project Management\\untitled folder\\Project\\UnitTests\\UnitTests.csproj",
+      "projectUniqueName": "F:\\MSC\\Project Management\\AttemptController\\UnitTests\\UnitTests.csproj",
       "projectName": "UnitTests",
-      "projectPath": "F:\\MSC\\Project Management\\untitled folder\\Project\\UnitTests\\UnitTests.csproj",
-      "outputPath": "F:\\MSC\\Project Management\\untitled folder\\Project\\UnitTests\\obj\\",
+      "projectPath": "F:\\MSC\\Project Management\\AttemptController\\UnitTests\\UnitTests.csproj",
+      "outputPath": "F:\\MSC\\Project Management\\AttemptController\\UnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.0"
@@ -10839,8 +10839,8 @@
       "frameworks": {
         "netcoreapp1.0": {
           "projectReferences": {
-            "F:\\MSC\\Project Management\\untitled folder\\Project\\AttemptController\\AttemptController.csproj": {
-              "projectPath": "F:\\MSC\\Project Management\\untitled folder\\Project\\AttemptController\\AttemptController.csproj"
+            "F:\\MSC\\Project Management\\AttemptController\\AttemptController\\AttemptController.csproj": {
+              "projectPath": "F:\\MSC\\Project Management\\AttemptController\\AttemptController\\AttemptController.csproj"
             }
           }
         }

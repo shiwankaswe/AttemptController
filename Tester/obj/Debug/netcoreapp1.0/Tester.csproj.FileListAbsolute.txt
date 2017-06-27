@@ -9,3 +9,14 @@ F:\MSC\Project Management\untitled folder\Project\Tester\obj\Debug\netcoreapp1.0
 F:\MSC\Project Management\untitled folder\Project\Tester\obj\Debug\netcoreapp1.0\Tester.AssemblyInfo.cs
 F:\MSC\Project Management\untitled folder\Project\Tester\obj\Debug\netcoreapp1.0\Simulator.dll
 F:\MSC\Project Management\untitled folder\Project\Tester\obj\Debug\netcoreapp1.0\Simulator.pdb
+F:\MSC\Project Management\AttemptController\Tester\bin\Debug\netcoreapp1.0\Simulator.deps.json
+F:\MSC\Project Management\AttemptController\Tester\bin\Debug\netcoreapp1.0\Simulator.runtimeconfig.json
+F:\MSC\Project Management\AttemptController\Tester\bin\Debug\netcoreapp1.0\Simulator.runtimeconfig.dev.json
+F:\MSC\Project Management\AttemptController\Tester\bin\Debug\netcoreapp1.0\Simulator.dll
+F:\MSC\Project Management\AttemptController\Tester\bin\Debug\netcoreapp1.0\Simulator.pdb
+F:\MSC\Project Management\AttemptController\Tester\bin\Debug\netcoreapp1.0\AttemptController.dll
+F:\MSC\Project Management\AttemptController\Tester\bin\Debug\netcoreapp1.0\AttemptController.pdb
+F:\MSC\Project Management\AttemptController\Tester\obj\Debug\netcoreapp1.0\Tester.csprojResolveAssemblyReference.cache
+F:\MSC\Project Management\AttemptController\Tester\obj\Debug\netcoreapp1.0\Tester.AssemblyInfo.cs
+F:\MSC\Project Management\AttemptController\Tester\obj\Debug\netcoreapp1.0\Simulator.dll
+F:\MSC\Project Management\AttemptController\Tester\obj\Debug\netcoreapp1.0\Simulator.pdb
