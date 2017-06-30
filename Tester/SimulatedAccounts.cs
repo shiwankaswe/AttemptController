@@ -54,12 +54,12 @@ namespace Tester
         public void Generate(ExperimentalConfiguration experimentalConfiguration)
         {
             SimulatedUserAccountController simUserAccountController = new SimulatedUserAccountController();
-            _logger.WriteStatus("Creating {0:N0} benign accounts", experimentalConfiguration.NumberOfBenignAccounts);        
+            _logger.WriteStatus("Creating accounts");        
             ConcurrentBag<SimulatedUserAccount> benignSimulatedAccountBag = new ConcurrentBag<SimulatedUserAccount>();
             Parallel.For(0, (int) experimentalConfiguration.NumberOfBenignAccounts, (index) =>
             {
-                if (index > 0 && index % 10000 == 0)
-                    _logger.WriteStatus("Created {0:N0} benign accounts", index);
+                //if (index > 0 && index % 10000 == 0)
+                //    _logger.WriteStatus("Created {0:N0} benign accounts", index);
                 SimulatedUserAccount userAccount = simUserAccountController.Create(
                     "user_" + index.ToString(),
                     _simPasswords.GetPasswordFromWeightedDistribution()
@@ -83,14 +83,14 @@ namespace Tester
                 }
             });
             BenignAccounts = benignSimulatedAccountBag.ToList();
-            _logger.WriteStatus("Finished creating {0:N0} benign accounts",
-                experimentalConfiguration.NumberOfBenignAccounts);
+           // _logger.WriteStatus("Finished creating {0:N0} benign accounts",
+           //     experimentalConfiguration.NumberOfBenignAccounts);
 
-            _logger.WriteStatus("Creating attacker IPs");            
+            //_logger.WriteStatus("Creating attacker IPs");            
             _ipPool.GenerateAttackersIps();
 
-            _logger.WriteStatus("Creating {0:N0} attacker accounts",
-                experimentalConfiguration.NumberOfAttackerControlledAccounts);
+            //_logger.WriteStatus("Creating {0:N0} attacker accounts",
+            //    experimentalConfiguration.NumberOfAttackerControlledAccounts);
             ConcurrentBag<SimulatedUserAccount> maliciousSimulatedAccountBag = new ConcurrentBag<SimulatedUserAccount>();
             
             Parallel.For(0, (int) experimentalConfiguration.NumberOfAttackerControlledAccounts, (index) =>
@@ -103,7 +103,7 @@ namespace Tester
                 maliciousSimulatedAccountBag.Add(userAccount);
             });
             AttackerAccounts = maliciousSimulatedAccountBag.ToList();
-            _logger.WriteStatus("Finished creating {0:N0} attacker accounts",
+            _logger.WriteStatus("Finished creating accounts",
                 experimentalConfiguration.NumberOfAttackerControlledAccounts);
             
             Parallel.ForEach(BenignAccounts.Union(AttackerAccounts),
@@ -117,7 +117,7 @@ namespace Tester
                             simAccount,
                             LoginAttempt.HashCookie(cookie));
                 });
-            _logger.WriteStatus("Finished creating user accounts for each simluated account record");
+            //_logger.WriteStatus("Finished creating user accounts for each simluated account record");
         }
     }
 }

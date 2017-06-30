@@ -60,10 +60,7 @@ namespace AttemptController
                     options.MinimumBinomialLadderFilterCacheFreshness);
                 services.AddSingleton<IBinomialLadderFilter, DistributedBinomialLadderFilterClient>(x => dblfClient);
 
-                DistributedBinomialLadderFilterController filterController =
-                    new DistributedBinomialLadderFilterController(dblfClient, options.NumberOfBitsPerShardInBinomialLadderFilter, options.PrivateConfigurationKey);
-                services.AddSingleton<DistributedBinomialLadderFilterController>(x => filterController);
-
+                
             }
             else
             {

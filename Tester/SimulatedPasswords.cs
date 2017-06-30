@@ -21,24 +21,24 @@ namespace Tester
         public SimulatedPasswords(DebugLogger logger, ExperimentalConfiguration config)
         {
             _logger = logger;
-            _logger.WriteStatus("Loading popular password file");
+            _logger.WriteStatus("Configuring...");
             LoadPasswordSelector(config.PasswordFrequencyFile);
             if (config.PopularPasswordsToRemoveFromDistribution > 0)
             {
                 _passwordSelector = _passwordSelector.TrimToRemoveInitialItems(config.PopularPasswordsToRemoveFromDistribution);
             }
 
-            _logger.WriteStatus("Loading passwords known to be common by the algorithm before the attack");
+            //_logger.WriteStatus("Loading passwords known to be common by the algorithm before the attack");
             LoadKnownPopularPasswords(config.PreviouslyKnownPopularPasswordFile);
-            _logger.WriteStatus("Creating common password selector");
+           // _logger.WriteStatus("Creating common password selector");
             _commonPasswordSelector = _passwordSelector.TrimToInitialItems(
                     (int)config.NumberOfPopularPasswordsForAttackerToExploit);
-            _logger.WriteStatus("Finished creating common password selector");
+           // _logger.WriteStatus("Finished creating common password selector");
 
-            _logger.WriteStatus("Creating list of most common passwords");
+           // _logger.WriteStatus("Creating list of most common passwords");
             OrderedListOfMostCommonPasswords =
                 _passwordSelector.GetItems();
-            _logger.WriteStatus("Finished creating list of most common passwords");
+            //_logger.WriteStatus("Finished creating list of most common passwords");
         }
 
 

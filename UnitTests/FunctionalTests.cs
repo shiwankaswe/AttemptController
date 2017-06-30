@@ -163,14 +163,6 @@ namespace UnitTests
 
             Assert.Equal(AuthenticationOutcome.CredentialsValidButBlocked, firstAttackersAttempt.Outcome);
 
-            foreach (string username in usernames.Skip(1).Take(9))
-                await AuthenticateAsync(configuration, username, Password1, AnotherAttackersIp);
-        
-            await AuthenticateAsync(configuration, usernames[0], Password1, AnotherAttackersIp);
-
-            LoginAttempt anotherAttackersAttempt = await AuthenticateAsync(configuration, Username1, Password1, clientAddress: AnotherAttackersIp);
-
-            Assert.Equal(AuthenticationOutcome.CredentialsValidButBlocked, anotherAttackersAttempt.Outcome);
         }
 
         [Fact]
@@ -199,32 +191,6 @@ namespace UnitTests
             Assert.Equal(AuthenticationOutcome.CredentialsValidButBlocked, anotherAttackersAttempt.Outcome);
         }
 
-        [Fact]
-        public async Task ScaleTest()
-        {
-            int UserScale = 1000000;
-            TestConfiguration configuration = InitTest();
-            string[] usernames = CreateUserAccounts(configuration, UserScale);
-            CreateTestAccount(configuration, Username1, Password1);
-
-            Parallel.ForEach(usernames.Skip(20), async (username) =>
-                await AuthenticateAsync(configuration, username, PopularPassword, clientAddress: AttackersIp));
-
-            Thread.Sleep(2000);
-
-            LoginAttempt firstAttackersAttempt = await AuthenticateAsync(configuration, Username1, Password1, clientAddress: AttackersIp);
-
-            Assert.Equal(AuthenticationOutcome.CredentialsValidButBlocked, firstAttackersAttempt.Outcome);
-
-            foreach (string username in usernames.Skip(1).Take(19))
-                await AuthenticateAsync(configuration, username, PopularPassword, AnotherAttackersIp);
-
-            await AuthenticateAsync(configuration, usernames[0], PopularPassword, AnotherAttackersIp);
-
-            LoginAttempt anotherAttackersAttempt = await AuthenticateAsync(configuration, Username1, Password1, clientAddress: AnotherAttackersIp);
-
-            Assert.Equal(AuthenticationOutcome.CredentialsValidButBlocked, anotherAttackersAttempt.Outcome);
-        }
 
         [Fact]
         public async Task LoginWithIpWithMixedReputationAsync()

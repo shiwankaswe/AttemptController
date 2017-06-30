@@ -20,3 +20,14 @@ F:\MSC\Project Management\AttemptController\Tester\obj\Debug\netcoreapp1.0\Teste
 F:\MSC\Project Management\AttemptController\Tester\obj\Debug\netcoreapp1.0\Tester.AssemblyInfo.cs
 F:\MSC\Project Management\AttemptController\Tester\obj\Debug\netcoreapp1.0\Simulator.dll
 F:\MSC\Project Management\AttemptController\Tester\obj\Debug\netcoreapp1.0\Simulator.pdb
+C:\Users\ASUS\Documents\AttemptController\Tester\bin\Debug\netcoreapp1.0\Simulator.deps.json
+C:\Users\ASUS\Documents\AttemptController\Tester\bin\Debug\netcoreapp1.0\Simulator.runtimeconfig.json
+C:\Users\ASUS\Documents\AttemptController\Tester\bin\Debug\netcoreapp1.0\Simulator.runtimeconfig.dev.json
+C:\Users\ASUS\Documents\AttemptController\Tester\bin\Debug\netcoreapp1.0\Simulator.dll
+C:\Users\ASUS\Documents\AttemptController\Tester\bin\Debug\netcoreapp1.0\Simulator.pdb
+C:\Users\ASUS\Documents\AttemptController\Tester\bin\Debug\netcoreapp1.0\AttemptController.dll
+C:\Users\ASUS\Documents\AttemptController\Tester\bin\Debug\netcoreapp1.0\AttemptController.pdb
+C:\Users\ASUS\Documents\AttemptController\Tester\obj\Debug\netcoreapp1.0\Tester.csprojResolveAssemblyReference.cache
+C:\Users\ASUS\Documents\AttemptController\Tester\obj\Debug\netcoreapp1.0\Tester.AssemblyInfo.cs
+C:\Users\ASUS\Documents\AttemptController\Tester\obj\Debug\netcoreapp1.0\Simulator.dll
+C:\Users\ASUS\Documents\AttemptController\Tester\obj\Debug\netcoreapp1.0\Simulator.pdb

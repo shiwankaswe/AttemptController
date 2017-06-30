@@ -26,3 +26,17 @@ F:\MSC\Project Management\AttemptController\UnitTests\obj\Debug\netcoreapp1.0\Un
 F:\MSC\Project Management\AttemptController\UnitTests\obj\Debug\netcoreapp1.0\UnitTests.AssemblyInfo.cs
 F:\MSC\Project Management\AttemptController\UnitTests\obj\Debug\netcoreapp1.0\StopGuessingTests.dll
 F:\MSC\Project Management\AttemptController\UnitTests\obj\Debug\netcoreapp1.0\StopGuessingTests.pdb
+C:\Users\ASUS\Documents\AttemptController\UnitTests\bin\Debug\netcoreapp1.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\ASUS\Documents\AttemptController\UnitTests\bin\Debug\netcoreapp1.0\xunit.runner.utility.dotnet.dll
+C:\Users\ASUS\Documents\AttemptController\UnitTests\bin\Debug\netcoreapp1.0\xunit.runner.reporters.dotnet.dll
+C:\Users\ASUS\Documents\AttemptController\UnitTests\bin\Debug\netcoreapp1.0\StopGuessingTests.deps.json
+C:\Users\ASUS\Documents\AttemptController\UnitTests\bin\Debug\netcoreapp1.0\StopGuessingTests.runtimeconfig.json
+C:\Users\ASUS\Documents\AttemptController\UnitTests\bin\Debug\netcoreapp1.0\StopGuessingTests.runtimeconfig.dev.json
+C:\Users\ASUS\Documents\AttemptController\UnitTests\bin\Debug\netcoreapp1.0\StopGuessingTests.dll
+C:\Users\ASUS\Documents\AttemptController\UnitTests\bin\Debug\netcoreapp1.0\StopGuessingTests.pdb
+C:\Users\ASUS\Documents\AttemptController\UnitTests\bin\Debug\netcoreapp1.0\AttemptController.dll
+C:\Users\ASUS\Documents\AttemptController\UnitTests\bin\Debug\netcoreapp1.0\AttemptController.pdb
+C:\Users\ASUS\Documents\AttemptController\UnitTests\obj\Debug\netcoreapp1.0\UnitTests.csprojResolveAssemblyReference.cache
+C:\Users\ASUS\Documents\AttemptController\UnitTests\obj\Debug\netcoreapp1.0\UnitTests.AssemblyInfo.cs
+C:\Users\ASUS\Documents\AttemptController\UnitTests\obj\Debug\netcoreapp1.0\StopGuessingTests.dll
+C:\Users\ASUS\Documents\AttemptController\UnitTests\obj\Debug\netcoreapp1.0\StopGuessingTests.pdb

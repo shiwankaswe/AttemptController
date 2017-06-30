@@ -10051,15 +10051,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Home\\.nuget\\packages\\": {}
+    "C:\\Users\\ASUS\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\MSC\\Project Management\\AttemptController\\Tester\\Tester.csproj",
+      "projectUniqueName": "C:\\Users\\ASUS\\Documents\\AttemptController\\Tester\\Tester.csproj",
       "projectName": "Tester",
-      "projectPath": "F:\\MSC\\Project Management\\AttemptController\\Tester\\Tester.csproj",
-      "outputPath": "F:\\MSC\\Project Management\\AttemptController\\Tester\\obj\\",
+      "projectPath": "C:\\Users\\ASUS\\Documents\\AttemptController\\Tester\\Tester.csproj",
+      "outputPath": "C:\\Users\\ASUS\\Documents\\AttemptController\\Tester\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.0"
@@ -10067,8 +10067,8 @@
       "frameworks": {
         "netcoreapp1.0": {
           "projectReferences": {
-            "F:\\MSC\\Project Management\\AttemptController\\AttemptController\\AttemptController.csproj": {
-              "projectPath": "F:\\MSC\\Project Management\\AttemptController\\AttemptController\\AttemptController.csproj"
+            "C:\\Users\\ASUS\\Documents\\AttemptController\\AttemptController\\AttemptController.csproj": {
+              "projectPath": "C:\\Users\\ASUS\\Documents\\AttemptController\\AttemptController\\AttemptController.csproj"
             }
           }
         }

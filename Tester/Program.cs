@@ -8,30 +8,14 @@ namespace Tester
     
     public class Program
     {
-        public static string BasePath = @"F:\MSC\Project Management\AttemptController\Tester\Test\";
+        public static string BasePath = @"C:\Users\ASUS\Documents\AttemptController\Tester\Test\";
         public static void Main(string[] args)
         {
             ulong sizeInMillions = 5;
+
             Simulator.RunExperimentalSweep(new[]
             {
                 GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:.01d, attack: ExperimentalConfiguration.AttackStrategy.BreadthFirst, pwToBan:100, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:.01d, attack: ExperimentalConfiguration.AttackStrategy.BreadthFirst, pwToBan:0, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:.01d, attack: ExperimentalConfiguration.AttackStrategy.BreadthFirst, pwToBan:10000, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:.01d, attack: ExperimentalConfiguration.AttackStrategy.UseUntilLikelyPopular, pwToBan:100, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:.01d, attack: ExperimentalConfiguration.AttackStrategy.Weighted, pwToBan:100, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:.01d, addToName: "NoProxies", fractionOfBenignIPsBehindProxies:0d, attack:  ExperimentalConfiguration.AttackStrategy.BreadthFirst, pwToBan:100, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:.01d, addToName: "Typosx5", extraTypoFactor: 5d ,attack: ExperimentalConfiguration.AttackStrategy.BreadthFirst, pwToBan:100, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:.1d, attack: ExperimentalConfiguration.AttackStrategy.BreadthFirst, pwToBan:100, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:.1d, attack: ExperimentalConfiguration.AttackStrategy.BreadthFirst, pwToBan:0, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:.1d, attack: ExperimentalConfiguration.AttackStrategy.BreadthFirst, pwToBan:10000, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:.1d, attack: ExperimentalConfiguration.AttackStrategy.UseUntilLikelyPopular, pwToBan:100, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:.1d, attack: ExperimentalConfiguration.AttackStrategy.Weighted, pwToBan:100, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:.1d, addToName: "NoProxies", fractionOfBenignIPsBehindProxies:0d, attack:  ExperimentalConfiguration.AttackStrategy.BreadthFirst, pwToBan:100, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:.1d, addToName: "Typosx5", extraTypoFactor: 5d ,attack: ExperimentalConfiguration.AttackStrategy.BreadthFirst, pwToBan:100, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:0d, addToName: "NoAttacks", fractionOfLoginAttemptsFromAttacker: 0d, attack:  ExperimentalConfiguration.AttackStrategy.BreadthFirst, pwToBan:100, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:0d, addToName: "NoOverlapNoProxies", fractionOfBenignIPsBehindProxies:0d, attack:  ExperimentalConfiguration.AttackStrategy.BreadthFirst, pwToBan:100, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:0d, addToName: "NoOverlap", attack:  ExperimentalConfiguration.AttackStrategy.BreadthFirst, pwToBan:100, scale: sizeInMillions),
-                GetConfig(fractionOfMaliciousIPsToOverlapWithBenign:0d, addToName: "NoOverlapNoBannedPasswords", attack:  ExperimentalConfiguration.AttackStrategy.BreadthFirst, pwToBan:0, scale: sizeInMillions),
             });
 
         }

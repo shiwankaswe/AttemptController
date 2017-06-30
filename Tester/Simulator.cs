@@ -66,7 +66,7 @@ namespace Tester
                 {
                     SimulatedPasswords simPasswords = new SimulatedPasswords(logger, config);
                     Simulator simulator = new Simulator(logger, path, config, simPasswords);
-                    simulator.Run();
+                    simulator.RunAsync();
                 }
                 catch (Exception e)
                 {
@@ -97,7 +97,7 @@ namespace Tester
             _experimentalConfiguration = myExperimentalConfiguration;
             BlockingAlgorithmOptions options = _experimentalConfiguration.BlockingOptions;
 
-            _logger.WriteStatus("Creating binomial ladder");
+            //_logger.WriteStatus("Creating binomial ladder");
             _binomialLadderFilter =
                 new BinomialLadderFilter(options.NumberOfBitsInBinomialLadderFilter_N, options.HeightOfBinomialLadder_H);
             _ipHistoryCache = new ConcurrentDictionary<IPAddress, SimIpHistory>();
@@ -105,29 +105,38 @@ namespace Tester
 
             _recentIncorrectPasswords = new AgingMembershipSketch(16, 128 * 1024);
 
-            _logger.WriteStatus("Exiting Simulator constructor");
+            //_logger.WriteStatus("Exiting Simulator constructor");
         }
 
 
-        public void Run()
+        public async Task RunAsync()
         {
             _logger.WriteStatus("In RunInBackground");
 
-            _logger.WriteStatus("Priming password-tracking with known common passwords");
+            //_logger.WriteStatus("Priming password-tracking with known common passwords");
             _simPasswords.PrimeWithKnownPasswordsAsync(_binomialLadderFilter, 40);
-            _logger.WriteStatus("Finished priming password-tracking with known common passwords");
+            //_logger.WriteStatus("Finished priming password-tracking with known common passwords");
 
-            _logger.WriteStatus("Creating IP Pool");
+            //_logger.WriteStatus("Creating IP Pool");
             _ipPool = new IpPool(_experimentalConfiguration);
-            _logger.WriteStatus("Generating simualted account records");
+            //_logger.WriteStatus("Generating simualted account records");
             _simAccounts = new SimulatedAccounts(_ipPool, _simPasswords, _logger);
             _simAccounts.Generate(_experimentalConfiguration);
 
-            _logger.WriteStatus("Creating login-attempt generator");
+            //_logger.WriteStatus("Creating login-attempt generator");
             _attemptGenerator = new SimulatedLoginAttemptGenerator(_experimentalConfiguration, _simAccounts, _ipPool,
                 _simPasswords);
             _logger.WriteStatus("Finiished creating login-attempt generator");
 
+            FricSimulator fri = new FricSimulator();
+            await fri.RunAsync(_logger, _ipPool);
+            _logger.WriteStatus("Click Enter To Next Step");
+            _logger.WriteStatus("   ");
+            _logger.WriteStatus("   ");
+            Console.Read();
+
+            _logger.WriteStatus("Running Password File to check");
+            _logger.WriteStatus("   ");
 
             foreach (
                 ConcurrentStreamWriter writer in
@@ -137,10 +146,9 @@ namespace Tester
                 lock (writer)
                 {
 
-                    writer.WriteLine(string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}",
+                    writer.WriteLine(string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}",
                         "UserID",
                         "IP",
-                        "DeviceCookie",
                         "IsFrequentlyGuessedPw",
                         "IsPasswordCorrect",
                         "IsFromAttackAttacker",
@@ -212,10 +220,9 @@ namespace Tester
                }
 
                var ipInfo = _ipPool.GetIpAddressDebugInfo(simAttempt.AddressOfClientInitiatingRequest);
-               string outputString = string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}",
+               string outputString = string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}",
                    simAttempt.SimAccount?.UsernameOrAccountId ?? "<null>",
                    simAttempt.AddressOfClientInitiatingRequest,
-                   simAttempt.DeviceCookieHadPriorSuccessfulLoginForThisAccount ? "HadCookie" : "NoCookie",
                    simAttempt.IsFrequentlyGuessedPassword ? "Frequent" : "Infrequent",
                    simAttempt.IsPasswordValid ? "Correct" : "Incorrect",
                    simAttempt.IsFromAttacker ? "FromAttacker" : "FromUser",

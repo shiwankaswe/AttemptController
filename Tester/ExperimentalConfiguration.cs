@@ -33,7 +33,7 @@ namespace Tester
         };
         public AttackStrategy AttackersStrategy = AttackStrategy.BreadthFirst;
 
-        public string OutputPath = @"F:\MSC\Project Management\AttemptController\Tester\Test\";
+        public string OutputPath = Program.BasePath;// @"F:\MSC\Project Management\AttemptController\Tester\Test\";
         public string OutputDirectoryName = @"Test";
         public string PasswordFrequencyFile = @"..\rockyou-withcount.txt";
         public string PreviouslyKnownPopularPasswordFile = @"..\phpbb.txt";
