@@ -8,7 +8,7 @@ namespace Tester
     
     public class Program
     {
-        public static string BasePath = @"C:\Users\ASUS\Documents\AttemptController\Tester\Test\";
+        public static string BasePath = @"..\Tester\Test\";
         public static void Main(string[] args)
         {
             ulong sizeInMillions = 5;
