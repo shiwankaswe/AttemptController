@@ -24,3 +24,4 @@ C:\Users\ASUS\Documents\AttemptController\AttemptController\obj\Debug\netcoreapp
 C:\Users\ASUS\Documents\AttemptController\AttemptController\obj\Debug\netcoreapp1.0\AttemptController.dll
 C:\Users\ASUS\Documents\AttemptController\AttemptController\obj\Debug\netcoreapp1.0\AttemptController.pdb
 C:\Users\ASUS\Documents\AttemptController\AttemptController\obj\Debug\netcoreapp1.0\AttemptController.csprojResolveAssemblyReference.cache
+F:\MSC\Project Management\AttemptController\AttemptController\obj\Debug\netcoreapp1.0\AttemptController.csprojResolveAssemblyReference.cache
