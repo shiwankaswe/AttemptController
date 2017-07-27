@@ -129,10 +129,21 @@ namespace Tester
             _logger.WriteStatus("Finiished creating login-attempt generator");
 
             FricSimulator fri = new FricSimulator();
+            _logger.WriteStatus("   ");
+            _logger.WriteStatus("   ");
+            _logger.WriteStatus("Click Enter To First Testing Step");
+            _logger.WriteStatus("   ");
+            _logger.WriteStatus("   ");
+            Console.Read();
+
             await fri.RunAsync(_logger, _ipPool);
-            _logger.WriteStatus("Click Enter To Next Step");
+
             _logger.WriteStatus("   ");
             _logger.WriteStatus("   ");
+            _logger.WriteStatus("Click Enter To Second Testing Step");
+            _logger.WriteStatus("   ");
+            _logger.WriteStatus("   ");
+            Console.Read();
             Console.Read();
 
             _logger.WriteStatus("Running Password File to check");
